@@ -1,0 +1,34 @@
+.chatRoom {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}
+.wrapper {
+    display: flex;
+    width: 100%;
+    height: 440px;
+}
+.dialogs,
+.messages {
+    overflow-y: scroll;
+}
+.dialogs::-webkit-scrollbar,
+.messages::-webkit-scrollbar {
+    width: 8px;
+}
+.dialogs::-webkit-scrollbar-track,
+.messages::-webkit-scrollbar-track {
+    background: #eeeeee;
+    border-radius: 8px;
+}
+.dialogs::-webkit-scrollbar-thumb,
+.messages::-webkit-scrollbar-thumb {
+    background: #d9d9d9;
+    border-radius: 8px;
+}
+.messages {
+    li {
+        padding: 15px 0 15px 20px;
+        list-style-type: none;
+    }
+}

@@ -1,0 +1,22 @@
+.comment {
+    display: flex;
+    margin: 10px 0;
+}
+.avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+}
+.text {
+    margin-left: 15px;
+    line-height: 24px;
+    p {
+        margin-bottom: 10px;
+    }
+    a {
+        color: #27aae1;
+        margin-right: 5px;
+        font-weight: 600;
+        text-decoration: none;
+    }
+}

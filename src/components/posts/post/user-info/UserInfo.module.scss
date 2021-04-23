@@ -1,0 +1,26 @@
+.postInfo {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #e6e6e6;
+    margin-bottom: 10px;
+}
+.userInfo {
+    p:first-child {
+        margin-top: 10px;
+    }
+    p {
+        margin-bottom: 15px;
+        a {
+            color: #27aae1;
+            font-weight: 600;
+            text-decoration: none;
+            font-size: 14px;
+        }
+        span {
+            color: #8dc63f;
+            font-size: 12px;
+            margin-left: 20px;
+        }
+    }
+}

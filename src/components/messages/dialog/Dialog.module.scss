@@ -1,0 +1,53 @@
+.dialog {
+    color: #939598;
+    text-decoration: none;
+    li {
+        display: flex;
+        align-items: center;
+        list-style-type: none;
+        height: 80px;
+        margin-right: 5px;
+        border-bottom: 1px solid #f1f2f2;
+        padding: 15px 10px;
+    }
+    img {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        margin-right: 10px;
+    }
+    .dialogInfo {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: space-between;
+        .row {
+            display: flex;
+            width: 100%;
+            justify-content: space-between;
+            line-height: 30px;
+        }
+        .row:first-child {
+            font-size: 12px;
+            span:first-child {
+                color: #27aae1;
+            }
+        }
+        .row:last-child {
+            font-size: 13px;
+        }
+    }
+}
+.dialog:hover {
+    color: #939598;
+    li {
+        border-bottom: 1px solid #8dc63f;
+    }
+}
+.activeDialog {
+    color: #939598;
+    li {
+        border-bottom: 1px solid #8dc63f;
+    }
+}

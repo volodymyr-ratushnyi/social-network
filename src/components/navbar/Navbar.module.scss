@@ -1,0 +1,61 @@
+.nav {
+    grid-area: n;
+    padding: 0 15px;
+    li {
+        display: flex;
+        align-items: center;
+        padding: 15px 0;
+        list-style-type: none;
+    }
+    li:last-child {
+        margin-top: 20px;
+    }
+    .link {
+        display: block;
+        width: 100%;
+        color: #6d6e71;
+        font-size: 15px;
+        text-decoration: none;
+    }
+    .link:hover {
+        text-decoration: underline;
+        outline: none;
+    }
+    .activeLink,
+    .link:focus,
+    .activeLink:hover {
+        color: rgb(62, 126, 179);
+        cursor: default;
+        text-decoration: none;
+        outline: none;
+    }
+    li:not(li:last-child) a::after {
+        content: "";
+        display: block;
+        width: 100%;
+        height: 1px;
+        background-color: #f1f2f2;
+        position: relative;
+        bottom: -15px;
+    }
+
+    .icon {
+        font-size: 20px;
+        margin-right: 15px;
+    }
+    ul :nth-child(1) .icon {
+        color: lawngreen;
+    }
+    ul :nth-child(2) .icon {
+        color: orange;
+    }
+    ul :nth-child(3) .icon {
+        color: dodgerblue;
+    }
+    ul :nth-child(5) .icon {
+        color: gray;
+    }
+    ul :nth-child(6) .icon {
+        color: yellow;
+    }
+}
