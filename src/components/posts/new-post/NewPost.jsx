@@ -8,7 +8,7 @@ import Button from '../../button/Button';
 const NewPost = (props) => {
   const textForPost = React.createRef();
   const addPost = () => {
-    props.addPost(textForPost.current.value);
+    props.dispatch({ type: 'ADD-POST', text: textForPost.current.value });
     textForPost.current.value = '';
   };
   return (

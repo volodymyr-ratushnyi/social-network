@@ -3,7 +3,7 @@ import NewPost from './new-post/NewPost';
 import Post from './post/Post';
 import s from './Posts.module.scss';
 const Posts = (props) => {
-  let posts = props.posts.map((post) => (
+  let posts = props.newsfeedPage.posts.map((post) => (
     <Post
       key={post.post_id}
       post_id={post.post_id}
@@ -16,13 +16,14 @@ const Posts = (props) => {
       dislikes={post.dislikes}
       comments={post.comments}
       dataForMe={props.dataForMe}
-      addComment={props.addComment}
+      dispatch={props.dispatch}
+      newCommentText={post.newCommentText}
     />
   ));
 
   return (
     <div className={s.content}>
-      <NewPost dataForMe={props.dataForMe} addPost={props.addPost} />
+      <NewPost dataForMe={props.dataForMe} dispatch={props.dispatch} />
       {posts}
     </div>
   );

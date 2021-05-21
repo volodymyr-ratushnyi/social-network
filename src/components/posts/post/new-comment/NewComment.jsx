@@ -1,23 +1,23 @@
 import React from 'react';
+import { addCommentCreator, updateCommentCreator } from '../../../../redux/newsfeed-reducer';
 import Button from '../../../button/Button';
-import Input from '../../../input/Input';
+import Textarea from '../../../textarea/Textarea';
 import s from './NewComment.module.scss';
 
 const NewComment = (props) => {
-  let textForComment;
   const getValueFromInput = (text) => {
-    textForComment = text;
+    props.dispatch(updateCommentCreator(text, props.post_id));
   };
 
   const addComment = () => {
-    props.addComment(textForComment, props.post_id);
+    props.dispatch(addCommentCreator(props.post_id));
   };
 
   return (
     <div className={s.wrapper}>
       <img src={props.dataForMe.avatar} alt="myAvatar" />
       <form className={s.myMessage + ' input-group mb-3'}>
-        <Input holder="Post a comment" type="text" cls="classic" getValueFromInput={getValueFromInput} />
+        <Textarea holder="Post a comment" value={props.newCommentText} cls="classic" cls1="comment" getValueFromInput={getValueFromInput} />
         <Button text="Send" cls="black" onClick={addComment} />
       </form>
     </div>

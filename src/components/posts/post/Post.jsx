@@ -25,7 +25,7 @@ const Post = (props) => {
           <UserInfo user={props.user} time={props.time} likes={props.likes} dislikes={props.dislikes} />
           <div className={s.text}>{props.text}</div>
           <div className={s.comments}>{comments}</div>
-          <NewComment dataForMe={props.dataForMe} addComment={props.addComment} post_id={props.post_id} />
+          <NewComment dataForMe={props.dataForMe} dispatch={props.dispatch} post_id={props.post_id} newCommentText={props.newCommentText} />
         </div>
       </div>
     </div>

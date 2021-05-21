@@ -18,6 +18,7 @@
         border-radius: 50%;
     }
     input {
+        width: 100%;
         font-size: 14px;
         // color: #939598;
         height: 30px;
@@ -34,6 +35,13 @@
         color: #939598;
     }
     button {
-        height: 30px;
+        height: 44px;
+        width: 100px;
+    }
+    .myMessage {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
     }
 }

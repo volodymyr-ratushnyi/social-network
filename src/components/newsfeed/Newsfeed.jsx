@@ -4,7 +4,7 @@ import Posts from '../posts/Posts';
 const Newsfeed = (props) => {
   return (
     <div>
-      <Posts posts={props.posts} dataForMe={props.dataForMe} addPost={props.addPost} addComment={props.addComment} />
+      <Posts newsfeedPage={props.newsfeedPage} dataForMe={props.dataForMe} dispatch={props.dispatch} />
     </div>
   );
 };

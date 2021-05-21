@@ -20,11 +20,12 @@ function App(props) {
           <div className="wrapper-content col-md-7">
             <Route
               path="/newsfeed"
-              render={() => (
-                <Newsfeed posts={props.state.posts} dataForMe={props.state.dataForMe} addPost={props.addPost} addComment={props.addComment} />
-              )}
+              render={() => <Newsfeed newsfeedPage={props.state.newsfeedPage} dataForMe={props.state.dataForMe} dispatch={props.dispatch} />}
             />
-            <Route path="/messages" render={() => <Messages dialogs={props.state.dialogs} dataForMe={props.state.dataForMe} />} />
+            <Route
+              path="/messages"
+              render={() => <Messages dialogsPage={props.state.dialogsPage} dataForMe={props.state.dataForMe} dispatch={props.dispatch} />}
+            />
           </div>
         </div>
       </div>

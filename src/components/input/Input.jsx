@@ -3,9 +3,7 @@ import s from './Input.module.scss';
 
 const Input = (props) => {
   const val = React.createRef();
-  const getValueFromInput = () => {
-    props.getValueFromInput(val.current.value);
-  };
+  // const getValueFromInput = () => props.getValueFromInput(val.current.value);
   return (
     <input
       type={props.type}
@@ -14,7 +12,6 @@ const Input = (props) => {
       aria-label="Recipient's username"
       aria-describedby="button-addon2"
       ref={val}
-      onChange={getValueFromInput}
     />
   );
 };
