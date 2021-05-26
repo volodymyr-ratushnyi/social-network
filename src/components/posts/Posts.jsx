@@ -15,15 +15,21 @@ const Posts = (props) => {
       likes={post.likes}
       dislikes={post.dislikes}
       comments={post.comments}
-      dataForMe={props.dataForMe}
-      dispatch={props.dispatch}
+      dataForMe={props.newsfeedPage.dataForMe}
+      addComment={props.addComment}
+      updateCommentText={props.updateCommentText}
       newCommentText={post.newCommentText}
     />
   ));
 
   return (
     <div className={s.content}>
-      <NewPost dataForMe={props.dataForMe} dispatch={props.dispatch} />
+      <NewPost
+        dataForMe={props.newsfeedPage.dataForMe}
+        newTextForAddPost={props.newsfeedPage.newTextForAddPost}
+        updateTextAddPost={props.updateTextAddPost}
+        addPost={props.addPost}
+      />
       {posts}
     </div>
   );

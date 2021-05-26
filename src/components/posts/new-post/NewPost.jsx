@@ -5,16 +5,18 @@ import { ImImages } from 'react-icons/im';
 import { IoIosVideocam } from 'react-icons/io';
 import { RiMap2Line } from 'react-icons/ri';
 import Button from '../../button/Button';
+import Textarea from '../../textarea/Textarea';
 const NewPost = (props) => {
-  const textForPost = React.createRef();
   const addPost = () => {
-    props.dispatch({ type: 'ADD-POST', text: textForPost.current.value });
-    textForPost.current.value = '';
+    props.addPost();
+  };
+  const updateTextAddPost = (text) => {
+    props.updateTextAddPost(text);
   };
   return (
     <div className={s.wrapper}>
       <img src={props.dataForMe.avatar} alt="" />
-      <textarea name="" id="" cols="30" rows="10" ref={textForPost} placeholder="Write what you wish"></textarea>
+      <Textarea value={props.newTextForAddPost} holder="Write what you wish" getValueFromInput={updateTextAddPost} />
       <BsPencilSquare className={s.icon} />
       <ImImages className={s.icon} />
       <IoIosVideocam className={s.icon} />

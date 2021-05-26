@@ -2,13 +2,12 @@ import React from 'react';
 import Dialog from './dialog/Dialog';
 import Message from './message/Message';
 import s from './Messages.module.scss';
-import { Route } from 'react-router';
 import MyMessage from './my-message/MyMessage';
 
 const Messages = (props) => {
   let dialogComponents = props.dialogsPage.dialogs.map((dialog) => (
     <Dialog
-      dispatch={props.dispatch}
+      selectDialog={props.selectDialog}
       firstName={dialog.firstName}
       lastName={dialog.lastName}
       key={`${dialog.dialog_id}`}
@@ -33,7 +32,11 @@ const Messages = (props) => {
         <div className={'col-md-5 ' + s.dialogs}>{dialogComponents}</div>
         <div className={'col-md-7 ' + s.messages}>{messageComponents}</div>
       </section>
-      <MyMessage dispatch={props.dispatch} newMessageText={props.dialogsPage.newMessageText} />
+      <MyMessage
+        updateNewMessageText={props.updateNewMessageText}
+        sendMessage={props.sendMessage}
+        newMessageText={props.dialogsPage.newMessageText}
+      />
     </main>
   );
 };

@@ -5,8 +5,7 @@ import s from './Dialog.module.scss';
 
 const Dialog = (props) => {
   const selectDialog = () => {
-    props.dispatch(selectDialogCreator(props.id));
-    console.log();
+    props.selectDialog(props.id);
   };
   return (
     <NavLink to={'/messages/' + props.id} className={s.dialog} activeClassName={s.activeDialog} onClick={selectDialog}>

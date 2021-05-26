@@ -1,10 +1,10 @@
 import React from 'react';
-import Posts from '../posts/Posts';
+import PostsContainer from '../posts/PostsContainer';
 // import s from './Newsfeed.module.scss';
-const Newsfeed = (props) => {
+const Newsfeed = () => {
   return (
     <div>
-      <Posts newsfeedPage={props.newsfeedPage} dataForMe={props.dataForMe} dispatch={props.dispatch} />
+      <PostsContainer />
     </div>
   );
 };
