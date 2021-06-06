@@ -173,7 +173,7 @@ const dialogsReducer = (state = initialState, action, dataForMe) => {
       return state;
   }
 };
-export const updateNewMessageTextActionCreator = (newText) => ({ type: UPDATE_NEW_MESSAGE_TEXT, newText: newText });
-export const selectDialogActionCreator = (dialog_id) => ({ type: SELECT_DIALOG, dialog_id: dialog_id });
-export const sendMessageActionCreator = () => ({ type: SEND_MESSAGE });
+export const updateNewMessageText = (newText) => ({ type: UPDATE_NEW_MESSAGE_TEXT, newText: newText });
+export const selectDialog = (dialog_id) => ({ type: SELECT_DIALOG, dialog_id: dialog_id });
+export const sendMessage = () => ({ type: SEND_MESSAGE });
 export default dialogsReducer;

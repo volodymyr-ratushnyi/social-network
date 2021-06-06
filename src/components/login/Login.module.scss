@@ -1,0 +1,11 @@
+.form {
+    width: 80%;
+    height: 200px;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    button {
+        width: 50%;
+    }
+}

@@ -4,8 +4,8 @@ import { BsPencilSquare } from 'react-icons/bs';
 import { ImImages } from 'react-icons/im';
 import { IoIosVideocam } from 'react-icons/io';
 import { RiMap2Line } from 'react-icons/ri';
-import Button from '../../button/Button';
-import Textarea from '../../textarea/Textarea';
+import Textarea from '../../common/textarea/Textarea';
+import Button from '../../common/button/Button';
 const NewPost = (props) => {
   const addPost = () => {
     props.addPost();

@@ -6,7 +6,7 @@ const UserInfo = (props) => {
     <div className={s.postInfo}>
       <div className={s.userInfo}>
         <p>
-          <a href="#">
+          <a href="/#">
             {props.user.firstName} {props.user.lastName}
           </a>{' '}
           <span>{props.user.following}</span>

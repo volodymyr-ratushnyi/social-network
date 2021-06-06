@@ -60,7 +60,6 @@ let initialState = {
 };
 
 const newsfeedReducer = (state = initialState, action) => {
-  let posts;
   switch (action.type) {
     case ADD_POST:
       if (state.newTextForAddPost === '') return state;
@@ -83,7 +82,7 @@ const newsfeedReducer = (state = initialState, action) => {
       return {
         ...state,
         posts: state.posts.map((post) => {
-          if (post.post_id === action.post_id) {
+          if (post.post_id === action.post_id && post.newCommentText !== '') {
             return {
               ...post,
               comments: [
@@ -106,8 +105,8 @@ const newsfeedReducer = (state = initialState, action) => {
       return state;
   }
 };
-export const updateTextAddPostActionCreator = (text) => ({ type: UPDATE_TEXT_ADD_POST, text: text });
-export const addPostActionCreator = () => ({ type: ADD_POST });
-export const updateCommentTextActionCreator = (text, post_id) => ({ type: UPDATE_TEXT_COMMENT, text: text, post_id: post_id });
-export const addCommentActionCreator = (post_id) => ({ type: ADD_COMMENT, post_id: post_id });
+export const updateTextAddPost = (text) => ({ type: UPDATE_TEXT_ADD_POST, text: text });
+export const addPost = () => ({ type: ADD_POST });
+export const updateCommentText = (text, post_id) => ({ type: UPDATE_TEXT_COMMENT, text: text, post_id: post_id });
+export const addComment = (post_id) => ({ type: ADD_COMMENT, post_id: post_id });
 export default newsfeedReducer;

@@ -1,8 +1,6 @@
 import React from 'react';
-import { sendMessageCreator, updateNewMessageTextCreator } from '../../../redux/dialogs-reducer';
-
-import Button from '../../button/Button';
-import Textarea from '../../textarea/Textarea';
+import Button from '../../common/button/Button';
+import Textarea from '../../common/textarea/Textarea';
 import s from './MyMessage.module.scss';
 
 const MyMessage = (props) => {

@@ -18,6 +18,12 @@ const Navbar = () => {
           </NavLink>
         </li>
         <li>
+          <ImImages className={s.icon} />
+          <NavLink to="/users" activeClassName={s.activeLink} className={s.link}>
+            People
+          </NavLink>
+        </li>
+        <li>
           <SiWechat className={s.icon} />
           <NavLink to="/messages" activeClassName={s.activeLink} className={s.link}>
             Message

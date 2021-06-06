@@ -6,7 +6,7 @@ const Comment = (props) => {
     <div className={s.comment}>
       <img src={props.user.avatar} alt="avatar" className={s.avatar} />
       <div className={s.text}>
-        <a href="#">
+        <a href="/#">
           {props.user.firstName} {props.user.lastName}
         </a>
         <p>{props.comment}</p>

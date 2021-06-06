@@ -1,10 +1,20 @@
 import React from 'react';
+import { NavLink } from 'react-router-dom';
+import Button from '../common/button/Button';
 import s from './Header.module.scss';
-const Header = () => {
+import logo from '../../assets/images/logo.png';
+const Header = (props) => {
   return (
     <header className={s.header}>
       <div className={s.wrapper}>
-        <img src="images/logo.png" alt="" />
+        <img src={logo} alt="" />
+        {props.id ? (
+          <Button text="SIGN OUT" cls="blue" onClick={props.signOut} />
+        ) : (
+          <NavLink to="/login">
+            <Button text="SIGN IN" cls="blue" />
+          </NavLink>
+        )}
       </div>
     </header>
   );

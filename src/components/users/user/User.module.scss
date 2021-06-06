@@ -1,0 +1,40 @@
+.wrapper {
+    width: 100%;
+    border-top: 1px solid #f1f2f2;
+    border-bottom: 1px solid #f1f2f2;
+    padding: 20px 0 20px 0;
+    margin-bottom: 20px;
+}
+.avatar {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+}
+.row {
+    display: flex;
+    justify-content: space-between;
+}
+.left {
+    display: flex;
+}
+.info {
+    padding: 0 10px 0 10px;
+    h6 {
+        margin: 10px 0 10px 0;
+        a {
+            color: #27aae1;
+            font-size: 14px;
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
+            color: #149ac9;
+        }
+    }
+    p {
+        margin-bottom: 10px;
+    }
+    .textMuted {
+        color: #939598;
+    }
+}

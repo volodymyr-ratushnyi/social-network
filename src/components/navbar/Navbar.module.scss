@@ -46,10 +46,11 @@
     ul :nth-child(1) .icon {
         color: lawngreen;
     }
-    ul :nth-child(2) .icon {
+    ul :nth-child(3) .icon {
         color: orange;
     }
-    ul :nth-child(3) .icon {
+    ul :nth-child(2) .icon,
+    ul :nth-child(4) .icon {
         color: dodgerblue;
     }
     ul :nth-child(5) .icon {

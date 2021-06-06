@@ -1,6 +1,6 @@
 import React from 'react';
-import Button from '../../../button/Button';
-import Textarea from '../../../textarea/Textarea';
+import Button from '../../../common/button/Button';
+import Textarea from '../../../common/textarea/Textarea';
 import s from './NewComment.module.scss';
 
 const NewComment = (props) => {

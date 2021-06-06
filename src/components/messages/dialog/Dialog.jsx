@@ -1,6 +1,5 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
-import { selectDialogCreator } from '../../../redux/dialogs-reducer';
 import s from './Dialog.module.scss';
 
 const Dialog = (props) => {
