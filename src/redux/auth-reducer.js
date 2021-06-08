@@ -1,5 +1,6 @@
+import { authAPI } from '../api/api';
+
 const SET_ME = 'SET-ME';
-const SIGN_OUT = 'SIGN-OUT';
 const GET_EMAIL = 'GET-EMAIL';
 const GET_PASSWORD = 'GET-PASSWORD';
 const initialState = {
@@ -19,13 +20,6 @@ const authReducer = (state = initialState, action) => {
         ...state,
         ...action.data,
       };
-    case SIGN_OUT:
-      return {
-        ...state,
-        id: null,
-        login: null,
-        email: null,
-      };
     case GET_EMAIL:
       return {
         ...state,
@@ -42,7 +36,28 @@ const authReducer = (state = initialState, action) => {
 };
 
 export const setMe = (id, login, email) => ({ type: SET_ME, data: { id, login, email } });
-export const signOut = () => ({ type: SIGN_OUT });
 export const getEmail = (email) => ({ type: GET_EMAIL, email });
 export const getPassword = (password) => ({ type: GET_PASSWORD, password });
+export const signIn = (email, password) => (dispatch) => {
+  authAPI.login(email, password).then((response) => {
+    if (response.resultCode === 0) {
+      dispatch(setMe(response.data.userId, null, email));
+    }
+  });
+};
+export const signOut = () => (dispatch) => {
+  authAPI.logout().then((response) => {
+    if (response.resultCode === 0) {
+      dispatch(setMe(null, null, null));
+    }
+  });
+};
+export const getMe = () => (dispatch) => {
+  authAPI.authMe().then((response) => {
+    if (response.resultCode === 0) {
+      let { id, email, login } = response.data;
+      dispatch(setMe(id, login, email));
+    }
+  });
+};
 export default authReducer;

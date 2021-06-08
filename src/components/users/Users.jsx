@@ -6,7 +6,7 @@ import s from './Users.module.scss';
 const Users = (props) => {
   return (
     <main className={s.wrapper}>
-      <Pagination totalPagesCount={props.totalPagesCount} setData={props.setUsers} currentPage={props.currentPage} pageSize={props.pageSize} />
+      <Pagination totalPagesCount={props.totalPagesCount} setData={props.getUsers} currentPage={props.currentPage} pageSize={props.pageSize} />
       {props.users.map((user) => (
         <User
           key={user.id}
@@ -22,7 +22,7 @@ const Users = (props) => {
           followingInProgress={props.followingInProgress}
         />
       ))}
-      <Pagination totalPagesCount={props.totalPagesCount} setUsers={props.setUsers} currentPage={props.currentPage} />
+      <Pagination totalPagesCount={props.totalPagesCount} setData={props.getUsers} currentPage={props.currentPage} pageSize={props.pageSize} />
     </main>
   );
 };
