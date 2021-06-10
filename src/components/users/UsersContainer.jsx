@@ -1,6 +1,8 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router';
+import { compose } from 'redux';
+import { withAuthRedirect } from '../../hoc/withAuthRedirect';
 import { switchFollow, getUsers } from '../../redux/users-reducer';
 import Preloader from '../common/preloader/Preloader';
 import Users from './Users';
@@ -45,4 +47,4 @@ const mapStateToProps = (state) => {
     followingInProgress: state.usersPage.followingInProgress,
   };
 };
-export default connect(mapStateToProps, { switchFollow, getUsers })(withRouter(UsersContainer));
+export default compose(connect(mapStateToProps, { switchFollow, getUsers }), withRouter, withAuthRedirect)(UsersContainer);

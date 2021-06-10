@@ -1,4 +1,6 @@
 import { connect } from 'react-redux';
+import { compose } from 'redux';
+import { withAuthRedirect } from '../../hoc/withAuthRedirect';
 import { selectDialog, sendMessage, updateNewMessageText } from '../../redux/dialogs-reducer';
 import Messages from './Messages';
 
@@ -7,5 +9,5 @@ const mapStateToProps = (state) => {
     dialogsPage: state.dialogsPage,
   };
 };
-const MessagesContainer = connect(mapStateToProps, { selectDialog, updateNewMessageText, sendMessage })(Messages);
-export default MessagesContainer;
+
+export default compose(connect(mapStateToProps, { selectDialog, updateNewMessageText, sendMessage }), withAuthRedirect)(Messages);
