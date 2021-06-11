@@ -23,11 +23,21 @@
     top: 30px;
     left: 35px;
 }
-.aboutMe {
-    height: 30px;
+.status {
+    height: 44px;
     font-weight: 600;
     font-size: 16px;
     margin-left: 170px;
+    button {
+        margin-top: 6px;
+    }
+}
+
+.aboutMe {
+    // height: 30px;
+    font-weight: 600;
+    font-size: 16px;
+    // margin-left: 170px;
 }
 
 .discription {

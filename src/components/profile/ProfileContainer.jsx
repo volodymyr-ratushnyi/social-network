@@ -1,7 +1,7 @@
 import React from 'react';
 import Profile from './Profile';
 import { connect } from 'react-redux';
-import { getProfile } from '../../redux/profile-reducer';
+import { getProfile, updateStatus } from '../../redux/profile-reducer';
 import Preloader from '../common/preloader/Preloader';
 import { withRouter } from 'react-router';
 import { compose } from 'redux';
@@ -18,8 +18,14 @@ class ProfileContainer extends React.Component {
 }
 const mapStateToProps = (state) => ({
   profile: state.profilePage.profile,
+  status: state.profilePage.status,
   notFoundAvatar: state.usersPage.notFoundImg,
   isFetching: state.usersPage.isFetching,
+  myId: state.auth.id,
 });
 
-export default compose(connect(mapStateToProps, { getProfile }), withRouter, withAuthRedirect)(ProfileContainer);
+export default compose(
+  connect(mapStateToProps, { getProfile, updateStatus }),
+  withRouter
+  //  withAuthRedirect
+)(ProfileContainer);

@@ -1,5 +1,5 @@
 import * as axios from 'axios';
-const instaceAxios = axios.create({
+const instanceAxios = axios.create({
   baseURL: 'https://social-network.samuraijs.com/api/1.0/',
   headers: {
     'API-KEY': '2b2c244c-7452-419c-95e4-b29563be5c69',
@@ -7,15 +7,20 @@ const instaceAxios = axios.create({
   withCredentials: true,
 });
 export const authAPI = {
-  authMe: () => instaceAxios.get(`auth/me`).then((res) => res.data),
-  login: (email, password) => instaceAxios.post('/auth/login', { email, password }).then((res) => res.data),
-  logout: () => instaceAxios.delete('/auth/login').then((res) => res.data),
+  authMe: () => instanceAxios.get(`auth/me`).then((response) => response.data),
+  login: (email, password) => instanceAxios.post('/auth/login', { email, password }).then((response) => response.data),
+  logout: () => instanceAxios.delete('/auth/login').then((response) => response.data),
 };
 
 export const usersAPI = {
-  getUsers: (count, currentPage) => instaceAxios.get(`users?count=${count}&page=${currentPage}`).then((res) => res.data),
-  getProfile: (id) => instaceAxios.get(`profile/${id}`),
-  checkFollow: (id) => instaceAxios.get(`follow/${id}`).then((res) => res.data),
-  follow: (id) => instaceAxios.post(`follow/${id}`),
-  unfollow: (id) => instaceAxios.delete(`follow/${id}`),
+  getUsers: (count, currentPage) => instanceAxios.get(`users?count=${count}&page=${currentPage}`).then((response) => response.data),
+  checkFollow: (id) => instanceAxios.get(`follow/${id}`).then((response) => response.data),
+  follow: (id) => instanceAxios.post(`follow/${id}`),
+  unfollow: (id) => instanceAxios.delete(`follow/${id}`),
+};
+
+export const profileAPI = {
+  getProfile: (id) => instanceAxios.get(`profile/${id}`),
+  getStatus: (id) => instanceAxios.get(`profile/status/${id}`).then((response) => response.data),
+  putStatus: (status) => instanceAxios.put('profile/status', { status }),
 };

@@ -11,6 +11,9 @@ const Input = (props) => {
       aria-label="Recipient's username"
       aria-describedby="button-addon2"
       onChange={getValueFromInput}
+      onBlur={props.onBlur}
+      value={props.value}
+      autoFocus={props.autoFocus}
     />
   );
 };
