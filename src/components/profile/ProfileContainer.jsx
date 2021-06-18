@@ -24,8 +24,4 @@ const mapStateToProps = (state) => ({
   myId: state.auth.id,
 });
 
-export default compose(
-  connect(mapStateToProps, { getProfile, updateStatus }),
-  withRouter
-  //  withAuthRedirect
-)(ProfileContainer);
+export default compose(connect(mapStateToProps, { getProfile, updateStatus }), withRouter, withAuthRedirect)(ProfileContainer);

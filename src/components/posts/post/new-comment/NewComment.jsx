@@ -1,24 +1,35 @@
 import React from 'react';
-import Button from '../../../common/button/Button';
-import Textarea from '../../../common/textarea/Textarea';
+import { Field, reduxForm } from 'redux-form';
+import { required } from '../../../../utils/validators/validators';
+import styleButton from '../../../common/button/Button.module.scss';
+import styleTextarea from '../../../common/textarea/Textarea.module.scss';
 import s from './NewComment.module.scss';
 
-const NewComment = (props) => {
-  const updateCommentText = (text) => {
-    props.updateCommentText(text, props.post_id);
-  };
+const NewCommentForm = (props) => {
+  return (
+    <form className={s.myMessage + ' input-group mb-3'} onSubmit={props.handleSubmit}>
+      <Field
+        name="text"
+        component="textarea"
+        placeholder="Post a comment"
+        className={`${styleTextarea.classic} ${styleTextarea.comment} form-control`}
+        validate={[required]}
+      />
+      <button className={styleButton.black}>Send</button>
+    </form>
+  );
+};
 
-  const addComment = () => {
-    props.addComment(props.post_id);
+const NewComment = (props) => {
+  const NewCommentReduxForm = reduxForm({ form: `postComment${props.post_id}`, shouldValidate: () => true })(NewCommentForm);
+  const addComment = (values) => {
+    props.addComment(props.post_id, values.text);
   };
 
   return (
     <div className={s.wrapper}>
       <img src={props.dataForMe.avatar} alt="myAvatar" />
-      <form className={s.myMessage + ' input-group mb-3'}>
-        <Textarea holder="Post a comment" value={props.newCommentText} cls="classic" cls1="comment" getValueFromInput={updateCommentText} />
-        <Button text="Send" cls="black" onClick={addComment} />
-      </form>
+      <NewCommentReduxForm onSubmit={addComment} />
     </div>
   );
 };

@@ -1,27 +1,37 @@
 import React from 'react';
 import s from './NewPost.module.scss';
+import styleButton from '../../common/button/Button.module.scss';
 import { BsPencilSquare } from 'react-icons/bs';
 import { ImImages } from 'react-icons/im';
 import { IoIosVideocam } from 'react-icons/io';
 import { RiMap2Line } from 'react-icons/ri';
-import Textarea from '../../common/textarea/Textarea';
-import Button from '../../common/button/Button';
-const NewPost = (props) => {
-  const addPost = () => {
-    props.addPost();
-  };
-  const updateTextAddPost = (text) => {
-    props.updateTextAddPost(text);
-  };
+import { Field, reduxForm } from 'redux-form';
+import { maxLength, required } from '../../../utils/validators/validators';
+const maxLength500 = maxLength(500);
+const NewPostForm = (props) => {
   return (
-    <div className={s.wrapper}>
-      <img src={props.dataForMe.avatar} alt="" />
-      <Textarea value={props.newTextForAddPost} holder="Write what you wish" getValueFromInput={updateTextAddPost} />
+    <form onSubmit={props.handleSubmit}>
+      <Field component="textarea" name="text" className="form-control" placeholder="Write what you wish" validate={[required, maxLength500]} />
       <BsPencilSquare className={s.icon} />
       <ImImages className={s.icon} />
       <IoIosVideocam className={s.icon} />
       <RiMap2Line className={s.icon} />
-      <Button text="Publish" cls="blue" onClick={addPost} />
+      <button className={'btn btn-primary ' + styleButton.blue}>Publish</button>
+    </form>
+  );
+};
+const NewPostReduxForm = reduxForm({
+  form: 'NewPost',
+})(NewPostForm);
+const NewPost = (props) => {
+  const addPost = (data) => {
+    props.addPost(data);
+    props.reset('NewPost');
+  };
+  return (
+    <div className={s.wrapper}>
+      <img src={props.dataForMe.avatar} alt="" />
+      <NewPostReduxForm onSubmit={addPost} />
     </div>
   );
 };

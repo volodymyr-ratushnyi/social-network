@@ -1,35 +1,25 @@
 import React from 'react';
 import Button from '../../common/button/Button';
-import Input from '../../common/input/Input';
 import s from './ProfileInfo.module.scss';
+import StatusForm from './StatusForm';
 class ProfileStatus extends React.Component {
   state = {
     editMode: false,
-    status: this.props.status,
   };
-  getValueFromInput = (e) => {
-    this.setState({
-      status: e,
-    });
-  };
-  switchEditMode = () => {
-    if (this.state.editMode && this.state.status !== this.props.status) this.props.updateStatus(this.state.status);
+  switchEditMode = (e) => {
     this.setState({
       editMode: !this.state.editMode,
-      status: this.props.status,
     });
+    if (e.status && typeof e.status === 'string') {
+      this.props.updateStatus(e.status);
+      return;
+    }
+    if (!this.state.editMode) this.props.updateStatus(e.target.value);
   };
+
   render() {
     return this.state.editMode ? (
-      <Input
-        type="text"
-        className="classic"
-        placeholder=""
-        getValueFromInput={this.getValueFromInput}
-        onBlur={this.switchEditMode}
-        value={this.state.status}
-        autoFocus={true}
-      />
+      <StatusForm switchEditMode={this.switchEditMode} status={this.props.status} onSubmit={this.switchEditMode} />
     ) : this.props.status ? (
       <span onDoubleClick={this.switchEditMode}>{this.props.status}</span>
     ) : (

@@ -1,11 +1,23 @@
 .form {
     width: 80%;
-    height: 200px;
     margin: auto;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
-    button {
-        width: 50%;
+    .item {
+        margin-bottom: 10px;
+    }
+    .buttons {
+        margin-top: 20px;
+        display: flex;
+        justify-content: space-between;
+        button {
+            width: 45%;
+        }
+        a {
+            width: 45%;
+            button {
+                width: 100%;
+            }
+        }
     }
 }

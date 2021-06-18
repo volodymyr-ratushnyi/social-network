@@ -9,7 +9,9 @@ const Header = (props) => {
       <div className={s.wrapper}>
         <img src={logo} alt="" />
         {props.id ? (
-          <Button text="SIGN OUT" cls="blue" onClick={props.signOut} />
+          <NavLink to="/login">
+            <Button text="SIGN OUT" cls="blue" onClick={props.signOut} />
+          </NavLink>
         ) : (
           <NavLink to="/login">
             <Button text="SIGN IN" cls="blue" />

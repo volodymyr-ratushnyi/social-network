@@ -1,10 +1,7 @@
 const ADD_POST = 'ADD-POST';
-const UPDATE_TEXT_ADD_POST = 'UPDATE_TEXT_ADD_POST';
 const ADD_COMMENT = 'ADD-COMMENT';
-const UPDATE_TEXT_COMMENT = 'UPDATE-TEXT-COMMENT';
 
 let initialState = {
-  newTextForAddPost: '',
   dataForMe: {
     user_id: 1,
     firstName: 'First-name',
@@ -54,7 +51,6 @@ let initialState = {
           text: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cumque quaerat est quidem adipisci a, numquam nesciunt vero necessitatibus exercitationem id sequi, maiore',
         },
       ],
-      newCommentText: '',
     },
   ],
 };
@@ -62,27 +58,23 @@ let initialState = {
 const newsfeedReducer = (state = initialState, action) => {
   switch (action.type) {
     case ADD_POST:
-      if (state.newTextForAddPost === '') return state;
       let post = {
         post_id: state.posts[state.posts.length - 1].post_id + 1,
         user: state.dataForMe,
         graphic: 'Only text',
         url: undefined,
-        text: state.newTextForAddPost,
+        text: action.text,
         time: 'now',
         likes: 0,
         dislikes: 0,
         comments: [],
-        newCommentText: '',
       };
-      return { ...state, posts: [...state.posts, post], newTextForAddPost: '' };
-    case UPDATE_TEXT_ADD_POST:
-      return { ...state, newTextForAddPost: action.text };
+      return { ...state, posts: [...state.posts, post] };
     case ADD_COMMENT:
       return {
         ...state,
         posts: state.posts.map((post) => {
-          if (post.post_id === action.post_id && post.newCommentText !== '') {
+          if (post.post_id === action.post_id) {
             return {
               ...post,
               comments: [
@@ -90,23 +82,18 @@ const newsfeedReducer = (state = initialState, action) => {
                 {
                   comment_id: post.comments.length + 1,
                   user: state.dataForMe,
-                  text: post.newCommentText,
+                  text: action.text,
                 },
               ],
-              newCommentText: '',
             };
           }
           return post;
         }),
       };
-    case UPDATE_TEXT_COMMENT:
-      return { ...state, posts: state.posts.map((post) => (post.post_id === action.post_id ? { ...post, newCommentText: action.text } : post)) };
     default:
       return state;
   }
 };
-export const updateTextAddPost = (text) => ({ type: UPDATE_TEXT_ADD_POST, text: text });
-export const addPost = () => ({ type: ADD_POST });
-export const updateCommentText = (text, post_id) => ({ type: UPDATE_TEXT_COMMENT, text: text, post_id: post_id });
-export const addComment = (post_id) => ({ type: ADD_COMMENT, post_id: post_id });
+export const addPost = (post) => ({ type: ADD_POST, text: post.text });
+export const addComment = (post_id, text) => ({ type: ADD_COMMENT, post_id, text });
 export default newsfeedReducer;

@@ -17,13 +17,13 @@ const ProfileInfo = (props) => {
         <img src={props.profile.photos.large ? props.profile.photos.large : props.notFoundAvatar} alt="" className={s.avatar} />
         {props.profile.lookingForAJob && <h1>LOOKKING FOR A JOB</h1>}
       </header>
-      <p className={s.status}>
+      <div className={s.status}>
         {props.profile.userId === props.myId ? (
           <ProfileStatus status={props.status} updateStatus={props.updateStatus} />
         ) : (
           <span>{props.status}</span>
         )}
-      </p>
+      </div>
       <p className={s.aboutMe}>{props.profile.aboutMe}</p>
 
       <section className={s.info}>

@@ -24,12 +24,7 @@ const Posts = (props) => {
 
   return (
     <div className={s.content}>
-      <NewPost
-        dataForMe={props.newsfeedPage.dataForMe}
-        newTextForAddPost={props.newsfeedPage.newTextForAddPost}
-        updateTextAddPost={props.updateTextAddPost}
-        addPost={props.addPost}
-      />
+      <NewPost dataForMe={props.newsfeedPage.dataForMe} reset={props.reset} addPost={props.addPost} />
       {posts}
     </div>
   );

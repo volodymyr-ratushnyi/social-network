@@ -5,6 +5,7 @@ import s from './Post.module.scss';
 import UserInfo from './user-info/UserInfo';
 
 const Post = (props) => {
+  console.log('ss');
   const renderSwitch = (type) => {
     switch (type) {
       case 'img':

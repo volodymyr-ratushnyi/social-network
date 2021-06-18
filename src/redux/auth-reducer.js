@@ -1,8 +1,7 @@
 import { authAPI } from '../api/api';
+import { stopSubmit } from 'redux-form';
 
 const SET_ME = 'SET-ME';
-const GET_EMAIL = 'GET-EMAIL';
-const GET_PASSWORD = 'GET-PASSWORD';
 const initialState = {
   id: null,
   login: null,
@@ -10,8 +9,6 @@ const initialState = {
   //   messages: [],
   //   fieldsErrors: [],
   //   resultCode: null,
-  myEmail: '',
-  myPassword: '',
 };
 const authReducer = (state = initialState, action) => {
   switch (action.type) {
@@ -20,31 +17,13 @@ const authReducer = (state = initialState, action) => {
         ...state,
         ...action.data,
       };
-    case GET_EMAIL:
-      return {
-        ...state,
-        myEmail: action.email,
-      };
-    case GET_PASSWORD:
-      return {
-        ...state,
-        myPassword: action.password,
-      };
     default:
       return state;
   }
 };
 
 export const setMe = (id, login, email) => ({ type: SET_ME, data: { id, login, email } });
-export const getEmail = (email) => ({ type: GET_EMAIL, email });
-export const getPassword = (password) => ({ type: GET_PASSWORD, password });
-export const signIn = (email, password) => (dispatch) => {
-  authAPI.login(email, password).then((response) => {
-    if (response.resultCode === 0) {
-      dispatch(setMe(response.data.userId, null, email));
-    }
-  });
-};
+
 export const signOut = () => (dispatch) => {
   authAPI.logout().then((response) => {
     if (response.resultCode === 0) {
@@ -57,6 +36,16 @@ export const getMe = () => (dispatch) => {
     if (response.resultCode === 0) {
       let { id, email, login } = response.data;
       dispatch(setMe(id, login, email));
+    }
+  });
+};
+export const signIn = (authData) => (dispatch) => {
+  authAPI.login(authData).then((response) => {
+    if (response.resultCode === 0) {
+      dispatch(getMe());
+    } else {
+      const message = response.messages.length > 0 ? response.messages.join(' / ') : 'Some error';
+      dispatch(stopSubmit('login', { _error: message }));
     }
   });
 };
